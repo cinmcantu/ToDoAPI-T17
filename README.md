@@ -14,9 +14,14 @@ Projeto realizado utilizando o [Node.js](https://nodejs.org/en/) com framework [
 Abra o terminal/Powershell e rode os comandos abaixo:
 
 Clonando o repositório:
+```
+git clone https://github.com/cinmcantu/ToDoAPI-T17.git
+```
 
 Entrando na pasta:
-
+```
+cd ToDoAPI-T17
+```
 
 Instalando os pacotes:
 ```
