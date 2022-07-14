@@ -39,6 +39,10 @@ npm install
 
 ## Atualizações da Aula
 
-__Aula 05__
+__Aula 06__
 
-Início do Projeto! Instalando o express e criando o arquivo `app.js` que será o arquivo principal utilizado para iniciarmos o servidor.
+Organização do projeto usando o padrão MVC.
+
+Criando as pastas src onde ficarão todos arquivos do código, controller e model.
+
+Mudando os trechos de código referente as rotas para os respectivos controllers.
