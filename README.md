@@ -39,7 +39,9 @@ npm install
 
 ## Atualizações da Aula
 
-__Aula 06__
+__Aula 06 v2__
+
+Nessa versão, é utilizado uma pasta só para listar as rotas.
 
 Organização do projeto usando o padrão MVC.
 
