@@ -9,6 +9,11 @@ Projeto realizado utilizando o [Node.js](https://nodejs.org/en/) com framework [
 * Node.js  v.16.15.1
 * NPM v.8.11.0
 
+## Packages
+
+* Express
+* Nodemon
+
 ## Instalação da Aplicação
 
 Abra o terminal/Powershell e rode os comandos abaixo:
@@ -28,21 +33,30 @@ Instalando os pacotes:
 npm install
 ```
 
+Rodando o projeto:
+```
+npm start
+```
+
 ## Rotas implementadas
 
- * GET /usuario 
+### Usuário
+ * GET  /usuario
+ * POST /usuario
 
+### Tarefa
  * GET /tarefa 
+ * POST /tarefa 
 
 ---
 ---
 
 ## Atualizações da Aula
 
-__Aula 06__
+__Aula 07__
 
-Organização do projeto usando o padrão MVC.
+Instalação do nodemon na dependência dev.
 
-Criando as pastas src onde ficarão todos arquivos do código, controller e model.
+Criação dos scripts `start` e `dev` para servirem de "atalho" para rodar comandos.
 
-Mudando os trechos de código referente as rotas para os respectivos controllers.
+Criação das rotas POST para uma das entidades.
