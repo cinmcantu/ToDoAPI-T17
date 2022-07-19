@@ -6,11 +6,12 @@ const usuarioController = (app)=>{
     // são rotas diferentes
 
     app.get('/usuario', (req, res)=>{
-        res.send("Rota GET para o usuario")
+        res.json({"msg": "Rota GET para o usuario"})
     })
 
     app.post('/usuario', (req, res)=>{
-        res.send("Rota POST para usuario")
+        const body = req.body
+        res.json({"usuario" : body})
     })
 }
 

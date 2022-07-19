@@ -6,11 +6,12 @@ const tarefaController = (app)=>{
     // são rotas diferentes
 
     app.get('/tarefa', (req, res)=>{
-        res.send("Rota GET para o tarefa")
+        res.json({"msg": "Rota GET para o tarefa"})
     })
 
     app.post('/tarefa', (req, res)=>{
-        res.send("Rota POST para usuario")
+        const body = req.body
+        res.json({"tarefa" : body})
     })
 }
 
