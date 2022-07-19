@@ -44,19 +44,52 @@ npm start
  * GET  /usuario
  * POST /usuario
 
+    Esquema da requisição
+    ```json
+    {
+     "nome": "Neo",
+     "email": "mr.anderson@email.com"
+    }
+    ```
+
+    Esquema da resposta
+    ```json
+    {
+        "usuario" : {"nome": "Neo",
+                     "email": "mr.anderson@email.com"}
+    }
+    ```
+
 ### Tarefa
  * GET /tarefa 
- * POST /tarefa 
+ * POST /tarefa
+
+    Esquema da requisição
+    ```json
+    {
+     "titulo": "Estudar Node",
+     "status": "fazendo"
+    }
+    ```
+
+    Schema da resposta
+    ```json
+    {
+        "tarefa" : {"titulo": "Estudar Node",
+                    "status": "fazendo"}
+    }
+    ```
+ 
 
 ---
 ---
 
 ## Atualizações da Aula
 
-__Aula 07__
+__Aula 08__
 
-Instalação do nodemon na dependência dev.
+Apresentação dos middlewares no express utilizando o `app.use()`. Utilização do `express.json()` dentro do middleware para fazer o parse de do body de das requisições.
 
-Criação dos scripts `start` e `dev` para servirem de "atalho" para rodar comandos.
+Criação da pasta de middleware e demonstração da utilização em um caso de autorização de cliente via informação recebida pelo header.
 
-Criação das rotas POST para uma das entidades.
+Troca do tipo de resposta de `res.send()` para `res.json()`.
