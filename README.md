@@ -136,7 +136,7 @@ npm start
 
 __Aula 09__
 
-__[V2]__ Nessa versão, criamos uma pasta chamada `services`. Nessa pasta vamos colocar arquivos que vão servir de auxilio para nosso código, como por exemplo, validações. Essa abstração vai ser muito importante quando formos programar nossos testes unitários.
+__[V2]__ Nessa versão, criamos uma pasta chamada `services`. Nessa pasta vamos colocar arquivos que vão servir de auxilio para nosso código, como por exemplo, validações. Essa abstração vai ser muito importante quando formos programar nossos testes unitários. Agora temos uma classe só responsavel por validar nossos dados e outra responsavel pela comunicação com o banco de dados.
 
 Criação das classes das models que são as abstrações das entidades de `Usuario` e `Tarefa`.
 
