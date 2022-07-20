@@ -136,10 +136,11 @@ npm start
 
 __Aula 09__
 
+__[V2]__ Nessa versão, criamos uma pasta chamada `services`. Nessa pasta vamos colocar arquivos que vão servir de auxilio para nosso código, como por exemplo, validações. Essa abstração vai ser muito importante quando formos programar nossos testes unitários.
+
 Criação das classes das models que são as abstrações das entidades de `Usuario` e `Tarefa`.
 
 Criação do nosso banco de dados mockado utilizando uma estrutura de dados de array para abstrair as tabelas do nosso banco e exportando eles em um objeto.
 
 Criação de métodos de manipulação de banco de dados nas models. Criamos os métodos que farão as operações de Create e Read, sendo chamados na controller atraves de uma instância das models.
 
-Também foi inserido um método de validação de senha para o usuário na classe da model, porém..... o ideal seria tirar ele de lá! Como fazer???
