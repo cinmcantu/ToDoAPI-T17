@@ -1,4 +1,5 @@
-import Usuario from "../model/Usuario.js"
+import UsuarioModel from "../model/Usuario.js"
+import ValidaUsuario from "../services/validacaoUsuario.js"
 
 // funçao que vai receber a instancia do servidor como parametros
 // e vai agrupar todos metodos que representam as rotas
@@ -7,13 +8,16 @@ const usuarioController = (app)=>{
     // Rotas com mesmo caminho ('/usuario'), mas com verbos diferentes
     // são rotas diferentes
 
+    // cria uma instancia do classe model usuario que sera usada para todas rotas
+    const modelUsuario = new UsuarioModel()
+
     app.get('/usuario', (req, res)=>{
-        // cria uma instancia do classe usuario
-        const usuario = new Usuario()
+
+        const todosUsuarios = modelUsuario.pegaUsuarios()
         
         // responde a requisição usando o metodo para pegar todos usuarios
         res.json(
-            {"usuarios" : usuario.pegaUsuarios(),
+            {"usuarios" : todosUsuarios,
              "erro" : false}
         )
     })
@@ -22,14 +26,15 @@ const usuarioController = (app)=>{
         const body = req.body
         try {
             // cria a instancia de usuario com os dados recebidos da requisição
-            const usuario = new Usuario(body.nome, body.email, body.senha)
+            const novoUsuario = new ValidaUsuario(body.nome, body.email, body.senha)
+
             // chama o metodo para inserir o usuario no banco de dados
-            usuario.insereUsuario(usuario)
+            modelUsuario.insereUsuario(novoUsuario)
 
             // retorna um json com uma mensagem e com usuario inserido
             res.json(
                 {"msg" : "Usuário inserido com sucesso",
-                "usuario" : usuario,
+                "usuario" : novoUsuario,
                 "erro" : false}
             )
             

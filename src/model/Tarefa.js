@@ -2,14 +2,7 @@ import bd from '../database/bd.js'
 
 let id = 0
 
-export default class Tarefa{
-    constructor(titulo, descricao, status){
-        this.id = id++
-        this.titulo = titulo
-        this.descricao = descricao
-        this.status = status
-        this.dataCriacao = new Date()
-    }
+export default class TarefaModel{
 
     // metodo para insercao da tarefa no banco de dados
     insereTarefa = (tarefa)=>{
