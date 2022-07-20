@@ -41,42 +41,90 @@ npm start
 ## Rotas implementadas
 
 ### Usuário
- * GET  /usuario
- * POST /usuario
+ * __GET  /usuario__
+
+    Esquema da resposta
+    ```json
+    {
+        "usuarios": [
+            {
+                "id": 1,
+                "nome": "Neo",
+                "email": "mr.anderson@email.com",
+                "senha": "SenhaSuperSegura123456!"
+            }
+        ],
+        "erro": false
+    }
+    ```
+
+ * __POST /usuario__
 
     Esquema da requisição
     ```json
     {
-     "nome": "Neo",
-     "email": "mr.anderson@email.com"
+        "nome" : "Neo",
+        "email" : "mr.anderson@email.com",
+        "senha" : "SenhaSuperSegura123456!"
     }
     ```
 
     Esquema da resposta
     ```json
     {
-        "usuario" : {"nome": "Neo",
-                     "email": "mr.anderson@email.com"}
+        "msg": "Usuário inserido com sucesso",
+        "usuario": {
+            "id": 1,
+            "nome": "Neo",
+            "email": "mr.anderson@email.com",
+            "senha": "SenhaSuperSegura123456!"
+        },
+        "erro": false
     }
     ```
 
 ### Tarefa
- * GET /tarefa 
- * POST /tarefa
+ * __GET /tarefa__
 
     Esquema da requisição
     ```json
     {
-     "titulo": "Estudar Node",
-     "status": "fazendo"
+        "tarefas": [
+            {
+                "id": 0,
+                "titulo": "Estudar Node",
+                "descricao": "Fazer o Módulo 4 da Resilia",
+                "status": "fazendo",
+                "dataCriacao": "2022-07-20T02:59:19.454Z"
+            }
+        ],
+        "erro": false
+    }
+    ```
+
+ * __POST /tarefa__
+
+    Esquema da requisição
+    ```json
+    {
+        "titulo" : "Estudar Node",
+        "descricao": "Fazer o Módulo 4 da Resilia",
+        "status": "fazendo"
     }
     ```
 
     Schema da resposta
     ```json
     {
-        "tarefa" : {"titulo": "Estudar Node",
-                    "status": "fazendo"}
+        "msg": "Tarefa inserida com sucesso",
+        "tarefa": {
+            "id": 0,
+            "titulo": "Estudar Node",
+            "descricao": "Fazer o Módulo 4 da Resilia",
+            "status": "fazendo",
+            "dataCriacao": "2022-07-20T02:59:19.454Z"
+        },
+        "erro": false
     }
     ```
  
@@ -86,10 +134,12 @@ npm start
 
 ## Atualizações da Aula
 
-__Aula 08__
+__Aula 09__
 
-Apresentação dos middlewares no express utilizando o `app.use()`. Utilização do `express.json()` dentro do middleware para fazer o parse de do body de das requisições.
+Criação das classes das models que são as abstrações das entidades de `Usuario` e `Tarefa`.
 
-Criação da pasta de middleware e demonstração da utilização em um caso de autorização de cliente via informação recebida pelo header.
+Criação do nosso banco de dados mockado utilizando uma estrutura de dados de array para abstrair as tabelas do nosso banco e exportando eles em um objeto.
 
-Troca do tipo de resposta de `res.send()` para `res.json()`.
+Criação de métodos de manipulação de banco de dados nas models. Criamos os métodos que farão as operações de Create e Read, sendo chamados na controller atraves de uma instância das models.
+
+Também foi inserido um método de validação de senha para o usuário na classe da model, porém..... o ideal seria tirar ele de lá! Como fazer???
