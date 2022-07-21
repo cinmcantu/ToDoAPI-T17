@@ -1,5 +1,3 @@
-let id = 0
-
 // função de validacao de senha
 export const validaSenha = (senha)=>{
     if(senha){
@@ -32,7 +30,6 @@ export const criaUsuario = (nome, email, senha)=>{
 
     // se nenhum erro form jogado, retorna objeto
     return{
-        "id": id++,
         "nome" : nome,
         "email" : email,
         "senha" : senha
