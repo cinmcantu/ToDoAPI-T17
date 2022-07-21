@@ -1,7 +1,5 @@
 import bd from '../database/bd.js'
 
-let id = 0
-
 export default class TarefaModel{
 
     // metodo para insercao da tarefa no banco de dados

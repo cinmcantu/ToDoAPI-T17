@@ -22,6 +22,20 @@ const usuarioController = (app)=>{
         )
     })
 
+    app.get('/usuario/email/:email', (req, res)=>{
+
+        const email = req.params.email
+
+        const usuario = modelUsuario.pegaUmUsuario(email)
+
+        // responde a requisição usando o metodo para pegar todos usuarios
+        res.json(
+            {"paramentro" : req.params.email,
+            "usuario": usuario,
+             "erro" : false}
+        )
+    })
+
     app.post('/usuario', (req, res)=>{
         const body = req.body
         try {
