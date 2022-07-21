@@ -134,13 +134,7 @@ npm start
 
 ## Atualizações da Aula
 
-__Aula 09__
+__Aula 10__
 
-__[V2]__ Nessa versão, criamos uma pasta chamada `services`. Nessa pasta vamos colocar arquivos que vão servir de auxilio para nosso código, como por exemplo, validações. Essa abstração vai ser muito importante quando formos programar nossos testes unitários. Agora temos uma classe só responsavel por validar nossos dados e outra responsavel pela comunicação com o banco de dados.
-
-Criação das classes das models que são as abstrações das entidades de `Usuario` e `Tarefa`.
-
-Criação do nosso banco de dados mockado utilizando uma estrutura de dados de array para abstrair as tabelas do nosso banco e exportando eles em um objeto.
-
-Criação de métodos de manipulação de banco de dados nas models. Criamos os métodos que farão as operações de Create e Read, sendo chamados na controller atraves de uma instância das models.
+Utilização de parametros nas rotas para poder usar de filtros ao retornar os dados retirados do banco de dados.
 

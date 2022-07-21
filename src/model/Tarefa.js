@@ -12,4 +12,9 @@ export default class TarefaModel{
         return bd.tarefa
     }
 
+    // metodo para pegar uma tarefa do banco de dados
+    pegaUmaTarefa = (titulo)=>{
+        return bd.tarefa.filter(tarefa=>tarefa.titulo===titulo)
+    }
+
 }

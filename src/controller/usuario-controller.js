@@ -22,16 +22,19 @@ const usuarioController = (app)=>{
         )
     })
 
+    // Rota para pegar um dado especifico baseado no parametro enviado
     app.get('/usuario/email/:email', (req, res)=>{
 
+        // recebe o parametro da rota
         const email = req.params.email
 
+        // chama o método que faz a busca no bd usando o parametro enviado
+        // como filtro
         const usuario = modelUsuario.pegaUmUsuario(email)
 
         // responde a requisição usando o metodo para pegar todos usuarios
         res.json(
-            {"paramentro" : req.params.email,
-            "usuario": usuario,
+            {"usuario": usuario,
              "erro" : false}
         )
     })

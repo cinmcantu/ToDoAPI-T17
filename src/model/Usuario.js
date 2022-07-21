@@ -14,7 +14,7 @@ export default class UsuarioModel{
 
     pegaUmUsuario = (email)=>{
         // usaria a informaçao para fazer uma query
-        return bd.usuario.filter(e=>e.email===email)
+        return bd.usuario.filter(usuario=>usuario.email===email)
     }
 
 }

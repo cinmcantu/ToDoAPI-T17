@@ -17,6 +17,23 @@ const tarefaController = (app)=>{
         // responde a requisição usando o metodo para pegar todas tarefas
         res.json(
             {"tarefas" : tarefas,
+             "erro" : false}
+        )
+    })
+
+    // Rota para pegar um dado especifico baseado no parametro enviado
+    app.get('/tarefa/titulo/:titulo', (req, res)=>{
+
+        // recebe o parametro da rota
+        const titulo = req.params.titulo
+
+        // chama o método que faz a busca no bd usando o parametro enviado
+        // como filtro
+        const tarefa = tarefaModel.pegaUmaTarefa(titulo)
+
+        // responde a requisição usando o metodo para pegar uma tarefa
+        res.json(
+            {"tarefa" : tarefa,
               "erro" : false}
         )
     })
