@@ -3,7 +3,6 @@ import express from 'express'
 
 // importando os controllers
 import usuarioController from './controller/usuario-controller.js'
-import tarefaController from './controller/tarefa-controller.js'
 
 // import de middlewares
 import autenticacao from './middleware/autenticacao.js'
@@ -22,7 +21,6 @@ autenticacao(app)
 
 // chamando os controllers e passando o servidor como parametro
 usuarioController(app)
-tarefaController(app)
 
 // abrindo o servidor na porta escolhida
 app.listen(port, ()=>{
