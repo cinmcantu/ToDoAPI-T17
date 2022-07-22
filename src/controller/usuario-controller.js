@@ -68,7 +68,10 @@ const usuarioController = (app)=>{
         const email = req.params.email
         modelUsuario.deletaUsuario(email)
 
-        res.json({"msg": "Usuario deletado"})
+        res.json({
+            "msg" : `Usuário com email ${email} deletado com sucesso`,
+            "erro" : false
+        })
     })
 
     app.put('/usuario/email/:email', (req, res)=>{
@@ -78,7 +81,7 @@ const usuarioController = (app)=>{
             const novosDados = new ValidaUsuario(body.nome, body.email, body.senha)
             modelUsuario.atualizaUsuario(email, novosDados)
             res.json({
-                "msg" : "Usuário Atualizado com sucesso",
+                "msg" : `Usuário com email ${email} atualizado com sucesso`,
                 "usuario" : novosDados,
                 "erro" : false
             })
@@ -89,10 +92,6 @@ const usuarioController = (app)=>{
                 "erro" : true
             })
         }
-
-
-        res.json({ "msg": "Usuario atualizado"})
-
     })
 }
 

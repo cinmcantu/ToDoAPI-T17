@@ -48,7 +48,7 @@ const tarefaController = (app)=>{
             // chama o metodo para inserir a tarefa no banco de dados
             tarefaModel.insereTarefa(novaTarefa)
 
-            // retorna um json com uma mensagem e com usuario inserido
+            // retorna um json com uma mensagem e com tarefa inserido
             res.json(
                 {"msg" : "Tarefa inserida com sucesso",
                 "tarefa" : novaTarefa,
@@ -61,6 +61,35 @@ const tarefaController = (app)=>{
             ) 
         }
 
+    })
+
+    app.delete('/tarefa/titulo/:titulo', (req,res)=>{
+        const titulo = req.params.titulo
+        tarefaModel.deletaTarefa(titulo)
+
+        res.json({
+            "msg" : `Tarefa com titulo ${titulo} deletada com sucesso`,
+            "erro" : false
+        })
+    })
+
+    app.put('/tarefa/titulo/:titulo', (req, res)=>{
+        const body = req.body
+        const titulo = req.params.titulo
+        try {
+            const novosDados = new ValidacaoTarefa(body.titulo, body.descricao, body.status)
+            tarefaModel.atualizaTarefa(titulo, novosDados)
+            res.json({
+                "msg" : `Tarefa com título ${titulo} atualizada com sucesso`,
+                "erro" : false
+            })
+
+        } catch (error) {
+            res.json({
+                "msg" : error.message,
+                "erro" : true
+            })
+        }
     })
 }
 

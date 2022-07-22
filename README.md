@@ -58,6 +58,23 @@ npm start
     }
     ```
 
+ * __GET  /usuario/email/:email__
+
+    Esquema da resposta
+    ```json
+    {
+        "usuario": [
+            {
+                "id": 1,
+                "nome": "Neo",
+                "email": "mr.anderson@email.com",
+                "senha": "SenhaSuperSegura123456!"
+            }
+        ],
+        "erro": false
+    }
+    ```
+
  * __POST /usuario__
 
     Esquema da requisição
@@ -83,6 +100,41 @@ npm start
     }
     ```
 
+ * __PUT /usuario/email/:email__
+
+    Esquema da requisição
+    ```json
+    {
+        "nome" : "Novo Neo",
+        "email" : "mr.anderson@email.com",
+        "senha" : "NovaSenhaSuperSegura123456!"
+    }
+    ```
+
+    Esquema da resposta
+    ```json
+    {
+        "msg": "Usuário com email mr.anderson1@email.com atualizado com sucesso",
+        "usuario": {
+            "id": 1,
+            "nome" : "Novo Neo",
+            "email" : "mr.anderson@email.com",
+            "senha" : "NovaSenhaSuperSegura123456!"
+        },
+        "erro": false
+    }
+    ```
+
+ * __DELETE  /usuario/email/:email__
+
+    Esquema da resposta
+    ```json
+        {
+            "msg": "Usuário com email mr.anderson@email.com deletado com sucesso",
+            "erro": false
+        }
+    ```
+
 ### Tarefa
  * __GET /tarefa__
 
@@ -90,6 +142,24 @@ npm start
     ```json
     {
         "tarefas": [
+            {
+                "id": 0,
+                "titulo": "Estudar Node",
+                "descricao": "Fazer o Módulo 4 da Resilia",
+                "status": "fazendo",
+                "dataCriacao": "2022-07-20T02:59:19.454Z"
+            }
+        ],
+        "erro": false
+    }
+    ```
+
+ * __GET /tarefa/titulo/:titulo__
+
+    Esquema da requisição
+    ```json
+    {
+        "tarefa": [
             {
                 "id": 0,
                 "titulo": "Estudar Node",
@@ -128,13 +198,50 @@ npm start
     }
     ```
  
+ * __PUT /tarefa/titulo/:titulo__
+
+    Esquema da requisição
+    ```json
+    {
+        "titulo" : "Estudar Node",
+        "descricao": "Fazer o Módulo 4 da Resilia",
+        "status": "concluido"
+    }
+    ```
+
+    Schema da resposta
+    ```json
+    {
+        "msg": "Tarefa com título Estudar Node atualizada com sucesso",
+        "tarefa": {
+            "id": 0,
+            "titulo": "Estudar Node",
+            "descricao": "Fazer o Módulo 4 da Resilia",
+            "status": "concluido",
+            "dataCriacao": "2022-07-20T02:59:19.454Z"
+        },
+        "erro": false
+    }
+    ```
+
+ * __DELETE /tarefa/titulo/:titulo__
+
+    Esquema da requisição
+    ```json
+    {
+        "msg": "Tarefa com titulo Estudar Node deletada com sucesso",
+        "erro": false
+    }
+    ```
 
 ---
 ---
 
 ## Atualizações da Aula
 
-__Aula 10__
+__Aula 10 e 11__
 
 Utilização de parametros nas rotas para poder usar de filtros ao retornar os dados retirados do banco de dados.
+
+Criação de rotas GET, DELETE e UPDATE(PUT) com parâmetro para filtro.
 

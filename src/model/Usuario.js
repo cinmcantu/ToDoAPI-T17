@@ -22,10 +22,15 @@ export default class UsuarioModel{
         bd.usuario = newDB
     }
 
-    atualizaUsuario = (email, novosDadosdoUsuario)=>{
+    atualizaUsuario = (email, novosDados)=>{
         const newDb = bd.usuario.map(usuario=>{
             if(usuario.email === email){
-                return Object.assign()
+                return {
+                    "id": usuario.id,
+                    "nome" : novosDados.nome || usuario.nome,
+                    "email" : novosDados.email || usuario.email,
+                    "senha" : novosDados.senha || usuario.senha,
+                }
             }
             return usuario
         })
