@@ -1,7 +1,7 @@
 // Criando uma "tabela" usuario
-const usuario = []
+let usuario = []
 
 // Crianda uma "tabela" tarefa
-const tarefa = []
+let tarefa = []
 
 export default {usuario, tarefa}
