@@ -17,4 +17,21 @@ export default class UsuarioModel{
         return bd.usuario.filter(usuario=>usuario.email===email)
     }
 
+    deletaUsuario = (email)=>{
+        const newDB = bd.usuario.filter(usuario=>usuario.email!==email)
+        bd.usuario = newDB
+    }
+
+    atualizaUsuario = (email, novosDadosdoUsuario)=>{
+        const newDb = bd.usuario.map(usuario=>{
+            if(usuario.email === email){
+                return Object.assign()
+            }
+            return usuario
+        })
+
+        bd.usuario = newDb
+
+    }
+
 }

@@ -63,6 +63,37 @@ const usuarioController = (app)=>{
         }
 
     })
+
+    app.delete('/usuario/email/:email', (req,res)=>{
+        const email = req.params.email
+        modelUsuario.deletaUsuario(email)
+
+        res.json({"msg": "Usuario deletado"})
+    })
+
+    app.put('/usuario/email/:email', (req, res)=>{
+        const body = req.body
+        const email = req.params.email
+        try {
+            const novosDados = new ValidaUsuario(body.nome, body.email, body.senha)
+            modelUsuario.atualizaUsuario(email, novosDados)
+            res.json({
+                "msg" : "Usuário Atualizado com sucesso",
+                "usuario" : novosDados,
+                "erro" : false
+            })
+
+        } catch (error) {
+            res.json({
+                "msg" : error.message,
+                "erro" : true
+            })
+        }
+
+
+        res.json({ "msg": "Usuario atualizado"})
+
+    })
 }
 
 // exportando a função
