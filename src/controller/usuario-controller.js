@@ -1,5 +1,6 @@
 import UsuarioModel from "../model/Usuario.js"
 import ValidaUsuario from "../services/validacaoUsuario.js"
+import db from '../database/db-sqlite.js'
 
 // funçao que vai receber a instancia do servidor como parametros
 // e vai agrupar todos metodos que representam as rotas
@@ -12,14 +13,18 @@ const usuarioController = (app)=>{
     const modelUsuario = new UsuarioModel()
 
     app.get('/usuario', (req, res)=>{
+        db.all('SELECT * FROM USUARIOS',(erro, linhas)=>{
+            console.log(linhas)
+            console.log(erro)
+        })
 
         const todosUsuarios = modelUsuario.pegaUsuarios()
         
         // responde a requisição usando o metodo para pegar todos usuarios
-        res.json(
-            {"usuarios" : todosUsuarios,
-             "erro" : false}
-        )
+        res.json({
+            "usuarios" : todosUsuarios,
+            "erro" : false
+        })
     })
 
     // Rota para pegar um dado especifico baseado no parametro enviado

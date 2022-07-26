@@ -1,5 +1,6 @@
 import TarefaModel from "../model/Tarefa.js"
 import ValidacaoTarefa from "../services/validacaoTarefa.js"
+import db from '../database/db-sqlite.js'
 
 // funçao que vai receber a instancia do servidor como parametros
 // e vai agrupar todos metodos que representam as rotas
@@ -12,6 +13,11 @@ const tarefaController = (app)=>{
     const tarefaModel = new TarefaModel()
 
     app.get('/tarefa', (req, res)=>{
+        db.all('SELECT * FROM TAREFAS',(erro, linhas)=>{
+            console.log(linhas)
+            console.log(erro)
+        })
+
         const tarefas = tarefaModel.pegaTarefas()
 
         // responde a requisição usando o metodo para pegar todas tarefas
