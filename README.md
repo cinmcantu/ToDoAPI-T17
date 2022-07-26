@@ -2,7 +2,7 @@
 
 Projeto de educacional do curso de Web Dev Full Stack da [Resilia Educação](https://www.resilia.com.br/) referente ao Módulo 04.
 
-Projeto realizado utilizando o [Node.js](https://nodejs.org/en/) com framework [Express](https://expressjs.com/).
+Projeto realizado utilizando o [Node.js](https://nodejs.org/en/) com framework [Express](https://expressjs.com/). Como banco de dados, foi utilizado o SQLite.
 
 ## Pré-Requisitos
 
@@ -13,6 +13,7 @@ Projeto realizado utilizando o [Node.js](https://nodejs.org/en/) com framework [
 
 * Express
 * Nodemon
+* SQLite
 
 ## Instalação da Aplicação
 
@@ -239,9 +240,13 @@ npm start
 
 ## Atualizações da Aula
 
-__Aula 10 e 11__
+__Aula 12__
 
-Utilização de parametros nas rotas para poder usar de filtros ao retornar os dados retirados do banco de dados.
+Instalação do SQLite, que será o banco de dados utilizado no projeto.
 
-Criação de rotas GET, DELETE e UPDATE(PUT) com parâmetro para filtro.
+Criação dos arquivos para criar e popular as tabelas do banco de dados e do arquivo que irá exportar a instância que será utilizada para as queries.
+
+Criação do arquivo `database.db`, que é nosso banco de dados.
+
+Chamadas das queries nos controllers, apenas a nível de teste. 
 
