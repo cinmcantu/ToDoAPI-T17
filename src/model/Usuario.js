@@ -1,15 +1,26 @@
 import bd from '../database/bd.js'
+import usuarioDAO from '../DAO/usuarioDAO.js'
+import ValidaUsuario from "../services/validacaoUsuario.js"
 
 export default class UsuarioModel{
 
     // metodo para insercao do usuario no banco de dados
-    insereUsuario = (usuario)=>{
-        bd.usuario.push(usuario)
+    insereUsuario = async (usuario)=>{
+        try {
+            // cria a instancia de usuario com os dados recebidos da requisição
+            const novoUsuario = new ValidaUsuario(usuario.nome, usuario.email, usuario.senha)
+            return await usuarioDAO.insereUsuario(novoUsuario)
+        } catch (error) {
+            return {
+                "msg" : error.message,
+                "erro" : true
+            }
+        }
     }
 
     // metodo para pegar todos usuarios do banco de dados
-    pegaUsuarios = ()=>{
-        return bd.usuario
+    pegaUsuarios = async ()=>{
+        return await usuarioDAO.pegaTodosUsuarios()
     }
 
     pegaUmUsuario = (email)=>{
@@ -17,9 +28,8 @@ export default class UsuarioModel{
         return bd.usuario.filter(usuario=>usuario.email===email)
     }
 
-    deletaUsuario = (email)=>{
-        const newDB = bd.usuario.filter(usuario=>usuario.email!==email)
-        bd.usuario = newDB
+    deletaUsuario = async (email)=>{  
+        return await usuarioDAO.deletaUsuario(email)
     }
 
     atualizaUsuario = (email, novosDados)=>{

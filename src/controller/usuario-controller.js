@@ -1,5 +1,4 @@
 import UsuarioModel from "../model/Usuario.js"
-import ValidaUsuario from "../services/validacaoUsuario.js"
 import db from '../database/db-sqlite.js'
 
 // funçao que vai receber a instancia do servidor como parametros
@@ -12,19 +11,17 @@ const usuarioController = (app)=>{
     // cria uma instancia do classe model usuario que sera usada para todas rotas
     const modelUsuario = new UsuarioModel()
 
-    app.get('/usuario', (req, res)=>{
-        db.all('SELECT * FROM USUARIOS',(erro, linhas)=>{
-            console.log(linhas)
-            console.log(erro)
-        })
-
-        const todosUsuarios = modelUsuario.pegaUsuarios()
+    app.get('/usuario', async (req, res)=>{
+        try {
+            const todosUsuarios = await modelUsuario.pegaUsuarios()
         
-        // responde a requisição usando o metodo para pegar todos usuarios
-        res.json({
-            "usuarios" : todosUsuarios,
-            "erro" : false
-        })
+            // responde a requisição usando o metodo para pegar todos usuarios
+            res.json(todosUsuarios)
+            
+        } catch (error) {
+            res.json(error)
+        }
+
     })
 
     // Rota para pegar um dado especifico baseado no parametro enviado
@@ -44,39 +41,36 @@ const usuarioController = (app)=>{
         )
     })
 
-    app.post('/usuario', (req, res)=>{
+    app.post('/usuario', async (req, res)=>{
         const body = req.body
         try {
-            // cria a instancia de usuario com os dados recebidos da requisição
-            const novoUsuario = new ValidaUsuario(body.nome, body.email, body.senha)
-
             // chama o metodo para inserir o usuario no banco de dados
-            modelUsuario.insereUsuario(novoUsuario)
+            const resposta = await modelUsuario.insereUsuario(body)
 
             // retorna um json com uma mensagem e com usuario inserido
-            res.json(
-                {"msg" : "Usuário inserido com sucesso",
-                "usuario" : novoUsuario,
-                "erro" : false}
-            )
+            res.json(resposta)
             
         } catch (error) {
-            res.json(
-                {"msg" : error.message,
-                 "erro" : true}
-            )
+            res.json({
+                "msg" : error.message,
+                "erro" : true
+            })
         }
 
     })
 
     app.delete('/usuario/email/:email', (req,res)=>{
-        const email = req.params.email
-        modelUsuario.deletaUsuario(email)
+        try {
+            const email = req.params.email
+            const resposta = modelUsuario.deletaUsuario(email)
+    
+            res.json(resposta)
+            
+        } catch (error) {
+            res.json(error)
+        }
 
-        res.json({
-            "msg" : `Usuário com email ${email} deletado com sucesso`,
-            "erro" : false
-        })
+
     })
 
     app.put('/usuario/email/:email', (req, res)=>{
