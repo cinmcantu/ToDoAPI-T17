@@ -1,6 +1,5 @@
 import usuarioDAO from '../DAO/usuarioDAO.js'
 import {
-    mesclaDadosUsuario,
     criaUsuario,
     validaUsuario,
 } from "../services/usuario.js"

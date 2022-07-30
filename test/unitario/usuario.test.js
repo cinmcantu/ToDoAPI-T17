@@ -1,5 +1,5 @@
 import { 
-    novoUsuario,
+    criaUsuario,
     validaUsuario
  } from "../../src/services/usuario.js"
 
@@ -31,7 +31,7 @@ describe("Verifica se o usuario é valido", ()=>{
 
 describe("Criando usuario", ()=>{
     test("Deve criar um usuario valido", ()=>{
-        expect(novoUsuario({
+        expect(criaUsuario({
             "nome" : "nome",
             "email": "email@email.com",
             "senha" : "abcdef"
@@ -43,7 +43,7 @@ describe("Criando usuario", ()=>{
     })
 
     test("deve rejeitar se for invalido", ()=>{
-        expect(()=>novoUsuario({
+        expect(()=>criaUsuario({
             "nome" : "nome",
             "email": "email.email.com",
             "senha" : "abcdef"
