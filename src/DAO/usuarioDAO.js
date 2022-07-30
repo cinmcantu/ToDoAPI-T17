@@ -5,15 +5,23 @@ const usuarioDAO = {
         return new Promise((resolve, reject)=>{
             db.all('SELECT * FROM USUARIOS',(erro, linhas)=>{
                 if(erro){
-                    reject({
-                        "mensagem" : erro.message,
-                        "erro" : true
-                    })
+                    reject(erro)
                 }else{
-                    resolve({
-                        "usuarios" : linhas,
-                        "erro" : false
-                    })
+                    resolve(linhas)
+                }
+            })
+        })
+
+    },
+
+    pegaUmUsuario : (email)=>{
+        return new Promise((resolve, reject)=>{
+            db.get('SELECT * FROM USUARIOS WHERE EMAIL = ?', email,
+            (erro, dado)=>{
+                if(erro){
+                    reject(erro)
+                }else{
+                    resolve(dado)
                 }
             })
         })
@@ -26,15 +34,9 @@ const usuarioDAO = {
             VALUES (?, ?, ?)`, usuario.nome, usuario.email, usuario.senha,
             (erro)=>{
                 if(erro){
-                    reject({
-                        "mensagem" : erro.message,
-                        "erro" : true
-                    })
+                    reject(erro)
                 }else{
-                    resolve({
-                        "mensagem" : "Usuario inserido com sucesso",
-                        "erro" : false
-                    })
+                    resolve("Usuario inserido com sucesso")
                 }
             })
         })
@@ -45,15 +47,50 @@ const usuarioDAO = {
             db.run(`DELETE FROM USUARIOS WHERE EMAIL = ?`, email,
             (erro)=>{
                 if(erro){
-                    reject({
-                        "mensagem" : erro.message,
-                        "erro" : true
-                    })
+                    reject(erro)
                 } else{
-                    resolve({
-                        "msg" : `Usuário com email ${email} deletado com sucesso`,
-                        "erro" : false
-                    })
+                    resolve(`Usuário com email ${email} deletado com sucesso`)
+                }
+            })
+        })
+    },
+
+    atualizaUsuario : (email, novoDado)=>{
+        // função que monta a query para atualzar apenas os
+        // valores que forem recebidos pelo body
+        const query = (novoDado)=>{
+            let nome = ""
+            let email = ""
+            let senha = ""
+            if(novoDado.nome){
+                nome = `NOME = ?`
+            }
+            if(novoDado.email){
+                email = `EMAIL = ?`
+                if(nome){
+                    email = ', '+ email
+                }
+            }
+            if(novoDado.senha){
+                senha = `SENHA = ?`
+                if(nome || email){
+                    senha = ', ' + senha
+                }
+            }
+
+            return `UPDATE USUARIOS SET
+            ${nome} ${email} ${senha}
+            WHERE EMAIL = ? `
+        }
+
+        return new Promise((resolve, reject)=>{
+            db.run(query(novoDado),
+            ...Object.values(novoDado),email,
+            (erro)=>{
+                if(erro){
+                    reject(erro)
+                } else{
+                    resolve(`Usuário com email ${email} atualizado com sucesso`)
                 }
             })
         })
