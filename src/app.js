@@ -1,19 +1,20 @@
-// Importando o package express
+// Importando o packages
 import express from 'express'
+import cors from 'cors'
+
 
 // importando os controllers
-import usuarioController from './controller/usuario-controller.js'
-import tarefaController from './controller/tarefa-controller.js'
+import usuarioController from './controller/usuarioController.js'
 
 // import de middlewares
 import autenticacao from './middleware/autenticacao.js'
 
 // instanciando o servidor
 const app = express()
-// escolhendo a porta em que o servidor será aberto
-const port = 3000
+
 
 // middlewares
+app.use(cors()) // middleware que libera o frontend acessar nossa api
 app.use(express.json()) // middleware que faz o parse do json do body
 
 // outros middlewares (validações, autenticações, tratamento de erros)
@@ -23,9 +24,5 @@ app.use(express.json()) // middleware que faz o parse do json do body
 
 // chamando os controllers e passando o servidor como parametro
 usuarioController(app)
-tarefaController(app)
 
-// abrindo o servidor na porta escolhida
-app.listen(port, ()=>{
-    console.log(`http://localhost:${port}/`)
-})
+export default app

@@ -7,10 +7,10 @@ const db = new sqlite3.Database('database.db');
 
 const USUARIOS_SCHEMA = `
 CREATE TABLE IF NOT EXISTS "USUARIOS" (
-    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
-    "nome" varchar(64),
-    "email" varchar(64),
-    "senha" varchar(64)
+    "ID" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "NOME" varchar(64),
+    "EMAIL" varchar(64),
+    "SENHA" varchar(64)
   );`;
 
 const ADD_USUARIOS_DATA = `
