@@ -172,7 +172,7 @@ O projeto passou por uma refatoração, algo muito comum em projetos reais onde,
 
 * __Troca de classes por objetos:__ como boa parte do código já estava sendo feita com funções e objetos, eu removi as poucas classes que ainda tinham para manter um padrão.
 
-* __Validações:__ alteração na forma que estavam sendo feita as alterações. Da forma que está agora é possível testá-las de maneira independente além de estarem mais desacopladas e ser possível utilizá-las em lugares diferente do projeto.
+* __Validações:__ alteração na forma que estavam sendo feita as validações. Da forma que está agora é possível testá-las de maneira independente além de estarem mais desacopladas e ser possível utilizá-las em lugares diferente do projeto.
 
 * __Testes:__ foram incluidos testes unitários e de integração, os testes unitários estão testando as funções de validação enquanto os testes de integração estão testando cada uma das rotas.
 
